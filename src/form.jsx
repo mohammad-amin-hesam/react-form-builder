@@ -7,7 +7,8 @@ import ReactDOM from 'react-dom';
 import { EventEmitter } from 'fbemitter';
 import FormValidator from './form-validator';
 import FormElements from './form-elements';
-import { TwoColumnRow, ThreeColumnRow, FourColumnRow } from "./multi-column";
+import { TwoColumnRow, ThreeColumnRow, FourColumnRow } from './multi-column';
+import CustomElement from './form-elements/custom-element';
 
 const {
   Image, Checkboxes, Signature, Download, Camera,
@@ -258,6 +259,18 @@ export default class ReactForm extends React.Component {
     return (<Element mutable={true} key={`form_${item.id}`} data={item} />);
   }
 
+  getCustomElement(item, answerData = {}) {
+    return (
+      <CustomElement
+        ref={c => (this.inputs[item.field_name] = c)}
+        mutable={true}
+        key={`form_${item.id}`}
+        data={item}
+        answerData={answerData}
+      />
+    );
+  }
+
   render() {
     let data_items = this.props.data;
 
@@ -284,6 +297,8 @@ export default class ReactForm extends React.Component {
         case 'Tags':
         case 'Range':
           return this.getInputElement(item);
+        case 'CustomElement':
+          return this.getCustomElement(item);
         case 'FourColumnRow':
           return this.getContainerElement(item, FourColumnRow);
         case 'ThreeColumnRow':

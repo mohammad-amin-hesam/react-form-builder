@@ -7,7 +7,6 @@ import update from 'immutability-helper';
 import store from './stores/store';
 import FormElementsEdit from './form-elements-edit';
 import SortableFormElements from './sortable-form-elements';
-import ID from './UUID';
 
 const { PlaceHolder } = SortableFormElements;
 
