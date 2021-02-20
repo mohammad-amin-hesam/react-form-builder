@@ -7,6 +7,8 @@ import update from 'immutability-helper';
 import store from './stores/store';
 import FormElementsEdit from './form-elements-edit';
 import SortableFormElements from './sortable-form-elements';
+import SortableElement from './sortable-element';
+import CustomElement from './form-elements/custom-element';
 
 const { PlaceHolder } = SortableFormElements;
 
@@ -238,7 +240,20 @@ export default class Preview extends React.Component {
   }
 
   getElement(item, index) {
-    const SortableFormElement = SortableFormElements[item.element];
+    // const SortableFormElement = SortableFormElements[item.element];
+    let SortableFormElement = null;
+    if (item.custom) {
+      if (!item.component) {
+        item.component = this.props.toolbarItems.find(x => x.key === item.element).component;
+      }
+      SortableFormElement = SortableElement(CustomElement);
+    } else {
+      SortableFormElement = SortableFormElements[item.element];
+    }
+
+    if (SortableFormElement === null) {
+      return null;
+    }
     return <SortableFormElement id={item.id} seq={this.seq} index={index} moveCard={this.moveCard} insertCard={this.insertCard} mutable={false} parent={this.props.parent} editModeOn={this.props.editModeOn} isDraggable={true} key={item.id} sortData={item.id} data={item} getDataById={this.getDataById} setAsChild={this.setAsChild} removeChild={this.removeChild} _onDestroy={this._onDestroy} />;
   }
 

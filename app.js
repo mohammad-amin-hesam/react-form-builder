@@ -140,11 +140,42 @@ const saveUrl = '/api/formdata';
 //   },
 // ];
 
+const TestComponent = () => <h2>Hello</h2>;
+
+const items = [{
+  key: 'Header',
+  name: 'Header Text',
+  icon: 'fa fa-header',
+  static: true,
+  content: 'Placeholder Text...',
+},
+{
+  key: 'TextInput',
+  canHaveAnswer: true,
+  canHaveAlternateForm: false,
+  name: 'Text Input',
+  label: 'Placeholder Label',
+  icon: 'fas fa-font',
+  field_name: 'text_input_',
+},
+{
+  key: 'CustomElement',
+  component: TestComponent,
+  type: 'custom',
+  field_name: 'asset_manager_',
+  name: 'Something You Want',
+  icon: 'fa fa-cog',
+  static: true,
+  props: { test: 'asdas' },
+  label: 'Label',
+}];
+
 ReactDOM.render(
   <FormBuilder.ReactFormBuilder
     variables={variables}
     url={url}
     saveUrl={saveUrl}
+    toolbarItems={items}
   />,
   document.getElementById('form-builder'),
 );

@@ -56,24 +56,25 @@ class ReactFormBuilder extends React.Component {
            </p>
            <Container />
          </div> */}
-         <div className="react-form-builder clearfix">
-           <div>
-             <Preview files={this.props.files}
-                 manualEditModeOff={this.manualEditModeOff.bind(this)}
-                 showCorrectColumn={this.props.showCorrectColumn}
-                 parent={this}
-                 data={this.props.data}
-                 url={this.props.url}
-                 saveUrl={this.props.saveUrl}
-                 onLoad={this.props.onLoad}
-                 onPost={this.props.onPost}
-                 editModeOn={this.editModeOn}
-                 editMode={this.state.editMode}
-                 variables={this.props.variables}
-                 editElement={this.state.editElement} />
-             <Toolbar {...toolbarProps} />
-           </div>
-         </div>
+          <div className="react-form-builder clearfix">
+            <div>
+              <Preview files={this.props.files}
+                manualEditModeOff={this.manualEditModeOff.bind(this)}
+                showCorrectColumn={this.props.showCorrectColumn}
+                parent={this}
+                data={this.props.data}
+                url={this.props.url}
+                saveUrl={this.props.saveUrl}
+                onLoad={this.props.onLoad}
+                onPost={this.props.onPost}
+                editModeOn={this.editModeOn}
+                editMode={this.state.editMode}
+                variables={this.props.variables}
+                toolbarItems={this.props.toolbarItems}
+                editElement={this.state.editElement} />
+              <Toolbar {...toolbarProps} customItems={this.props.customToolbarItems} />
+            </div>
+          </div>
         </div>
       </DndProvider>
     );

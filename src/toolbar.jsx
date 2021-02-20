@@ -11,9 +11,10 @@ export default class Toolbar extends React.Component {
   constructor(props) {
     super(props);
 
-    const items = (this.props.items) ? this.props.items : this._defaultItems();
+    const items = (props.items) ? props.items : this._defaultItems();
+    // const { customItems = [] } = props;
     this.state = {
-      items,
+      items, // : items.concat(customItems),
     };
     store.subscribe(state => this.setState({ store: state }));
     this.create = this.create.bind(this);
@@ -253,6 +254,14 @@ export default class Toolbar extends React.Component {
 
     if (this.props.showDescription === true && !item.static) {
       elementOptions.showDescription = true;
+    }
+
+    if (item.type === 'custom') {
+      elementOptions.key = item.key;
+      elementOptions.custom = true;
+      elementOptions.props = item.props;
+      elementOptions.component = item.component || null;
+      elementOptions.custom_options = item.custom_options || [];
     }
 
     if (item.static) {
