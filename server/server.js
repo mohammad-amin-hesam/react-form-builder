@@ -50,8 +50,8 @@ function fixLabelLink(data) {
 app.route('/api/form/')
   .get((req, res) => {
     const data = fixLabelLink(formData.data);
-    console.log('get form: ', data);
-    console.log('get form answers: ', formData.answers);
+    // console.log('get form: ', data);
+    // console.log('get form answers: ', formData.answers);
     res.render('index', {
       data: JSON.stringify(data),
       answers: JSON.stringify(formData.answers),

@@ -51,7 +51,6 @@ class CustomElement extends Component {
                 <span className="label-required label label-danger">Required</span>
               )}
           </label>
-          <hr />
           <Element data={this.props.data} {...this.props.data.props} {...props} />
         </div>
       </div>
