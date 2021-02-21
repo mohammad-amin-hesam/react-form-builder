@@ -270,7 +270,7 @@ export default class ReactForm extends React.Component {
     return (
       <CustomElement
         handleChange={this.handleChange}
-        ref={c => (this.inputs[item.field_name] = c)}
+        ref={c => this.inputs[item.field_name] = c}
         mutable={true}
         read_only={this.props.read_only}
         key={`form_${item.id}`}

@@ -153,19 +153,9 @@ Registry.register('TestComponent', TestComponent);
 
 const items = [{
   key: 'Header',
-  // name: 'Header Text',
-  // icon: 'fa fa-header',
-  // static: true,
-  // content: 'Placeholder Text...',
 },
 {
   key: 'TextInput',
-  // canHaveAnswer: true,
-  // canHaveAlternateForm: false,
-  // name: 'Text Input',
-  // label: 'Placeholder Label',
-  // icon: 'fas fa-font',
-  // field_name: 'text_input_',
 },
 {
   key: 'TestComponent',
@@ -177,7 +167,7 @@ const items = [{
   icon: 'fa fa-cog',
   static: true,
   props: { test: 'test_comp' },
-  label: 'Label',
+  label: 'Label Test',
 },
 {
   key: 'MyInput',
@@ -188,9 +178,8 @@ const items = [{
   field_name: 'my_input_',
   name: 'My Input',
   icon: 'fa fa-cog',
-  static: true,
   props: { test: 'test_input' },
-  label: 'Label',
+  label: 'Label Input',
 }];
 
 ReactDOM.render(
