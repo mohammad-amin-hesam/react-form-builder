@@ -144,9 +144,8 @@ const saveUrl = '/api/formdata';
 const TestComponent = () => <h2>Hello</h2>;
 
 const MyInput = React.forwardRef((props, ref) => {
-  const { name } = props;
-  console.log(props);
-  return <input ref={ref} name={name} />;
+  const { name, defaultValue, disabled } = props;
+  return <input ref={ref} name={name} defaultValue={defaultValue} disabled={disabled} />;
 });
 
 Registry.register('MyInput', MyInput);
@@ -173,11 +172,11 @@ const items = [{
   element: 'CustomElement',
   component: TestComponent,
   type: 'custom',
-  field_name: 'asset_manager_',
+  field_name: 'test_component',
   name: 'Something You Want',
   icon: 'fa fa-cog',
   static: true,
-  props: { test: 'asdas' },
+  props: { test: 'test_comp' },
   label: 'Label',
 },
 {
@@ -185,12 +184,12 @@ const items = [{
   element: 'CustomElement',
   component: MyInput,
   type: 'custom',
-  fowardRef: true,
-  field_name: 'asset_manager_',
+  forwardRef: true,
+  field_name: 'my_input_',
   name: 'My Input',
   icon: 'fa fa-cog',
   static: true,
-  props: { test: 'asdas' },
+  props: { test: 'test_input' },
   label: 'Label',
 }];
 

@@ -10,9 +10,9 @@ class CustomElement extends Component {
   render() {
     const props = {};
     props.name = this.props.data.field_name;
-    props.answerData = this.props.answerData;
+    props.defaultValue = this.props.defaultValue;
 
-    if (this.props.mutable && this.props.data.fowardRef) {
+    if (this.props.mutable && this.props.data.forwardRef) {
       props.ref = this.inputField;
     }
 
