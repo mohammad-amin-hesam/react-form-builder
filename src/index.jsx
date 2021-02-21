@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { DndProvider } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import Preview from './preview';
 import Toolbar from './toolbar';
 import ReactFormGenerator from './form';

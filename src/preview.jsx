@@ -7,8 +7,6 @@ import update from 'immutability-helper';
 import store from './stores/store';
 import FormElementsEdit from './form-elements-edit';
 import SortableFormElements from './sortable-form-elements';
-import SortableElement from './sortable-element';
-import CustomElement from './form-elements/custom-element';
 
 const { PlaceHolder } = SortableFormElements;
 
@@ -240,19 +238,17 @@ export default class Preview extends React.Component {
   }
 
   getElement(item, index) {
-    // const SortableFormElement = SortableFormElements[item.element];
-    let SortableFormElement = null;
     if (item.custom) {
       if (!item.component || typeof item.component !== 'function') {
+        // eslint-disable-next-line no-param-reassign
         item.component = this.props.registry.get(item.key);
         if (!item.component) {
+          // eslint-disable-next-line no-console
           console.error(`${item.element} was not registered`);
         }
       }
-      SortableFormElement = SortableElement(CustomElement);
-    } else {
-      SortableFormElement = SortableFormElements[item.element];
     }
+    const SortableFormElement = SortableFormElements[item.element];
 
     if (SortableFormElement === null) {
       return null;
