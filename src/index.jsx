@@ -9,6 +9,7 @@ import Preview from './preview';
 import Toolbar from './toolbar';
 import ReactFormGenerator from './form';
 import store from './stores/store';
+import Registry from './stores/registry';
 
 class ReactFormBuilder extends React.Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class ReactFormBuilder extends React.Component {
                 editModeOn={this.editModeOn}
                 editMode={this.state.editMode}
                 variables={this.props.variables}
-                toolbarItems={this.props.toolbarItems}
+                registry={Registry}
                 editElement={this.state.editElement} />
               <Toolbar {...toolbarProps} customItems={this.props.customToolbarItems} />
             </div>
@@ -85,7 +86,10 @@ const FormBuilders = {};
 FormBuilders.ReactFormBuilder = ReactFormBuilder;
 FormBuilders.ReactFormGenerator = ReactFormGenerator;
 FormBuilders.ElementStore = store;
+FormBuilders.Registry = Registry;
 
 export default FormBuilders;
 
-export { ReactFormBuilder, ReactFormGenerator, store as ElementStore };
+export {
+ ReactFormBuilder, ReactFormGenerator, store as ElementStore, Registry,
+};

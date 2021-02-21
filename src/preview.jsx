@@ -243,8 +243,11 @@ export default class Preview extends React.Component {
     // const SortableFormElement = SortableFormElements[item.element];
     let SortableFormElement = null;
     if (item.custom) {
-      if (!item.component) {
-        item.component = this.props.toolbarItems.find(x => x.key === item.element).component;
+      if (!item.component || typeof item.component !== 'function') {
+        item.component = this.props.registry.get(item.key);
+        if (!item.component) {
+          console.error(`${item.element} was not registered`);
+        }
       }
       SortableFormElement = SortableElement(CustomElement);
     } else {

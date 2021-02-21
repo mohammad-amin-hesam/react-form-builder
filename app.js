@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DemoBar from './demobar';
-import FormBuilder from './src/index';
+import FormBuilder, { Registry } from './src/index';
 import * as variables from './variables';
+
 // import { get, post} from './src/stores/requests';
 // Add our stylesheets for the demo.
 require('./scss/application.scss');
@@ -142,6 +143,15 @@ const saveUrl = '/api/formdata';
 
 const TestComponent = () => <h2>Hello</h2>;
 
+const MyInput = React.forwardRef((props, ref) => {
+  const { name } = props;
+  console.log(props);
+  return <input ref={ref} name={name} />;
+});
+
+Registry.register('MyInput', MyInput);
+Registry.register('TestComponent', TestComponent);
+
 const items = [{
   key: 'Header',
   name: 'Header Text',
@@ -159,11 +169,25 @@ const items = [{
   field_name: 'text_input_',
 },
 {
-  key: 'CustomElement',
+  key: 'TestComponent',
+  element: 'CustomElement',
   component: TestComponent,
   type: 'custom',
   field_name: 'asset_manager_',
   name: 'Something You Want',
+  icon: 'fa fa-cog',
+  static: true,
+  props: { test: 'asdas' },
+  label: 'Label',
+},
+{
+  key: 'MyInput',
+  element: 'CustomElement',
+  component: MyInput,
+  type: 'custom',
+  fowardRef: true,
+  field_name: 'asset_manager_',
+  name: 'My Input',
   icon: 'fa fa-cog',
   static: true,
   props: { test: 'asdas' },

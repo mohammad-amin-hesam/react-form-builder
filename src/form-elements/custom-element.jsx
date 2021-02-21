@@ -12,7 +12,7 @@ class CustomElement extends Component {
     props.name = this.props.data.field_name;
     props.answerData = this.props.answerData;
 
-    if (this.props.mutable) {
+    if (this.props.mutable && this.props.data.fowardRef) {
       props.ref = this.inputField;
     }
 
