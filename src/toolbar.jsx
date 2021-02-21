@@ -7,14 +7,31 @@ import ToolbarItem from './toolbar-draggable-item';
 import ID from './UUID';
 import store from './stores/store';
 
+function isDefaultItem(item) {
+  const keys = Object.keys(item);
+  return keys.filter(x => x !== 'element' && x !== 'key').length === 0;
+}
+
+function buildItems(items, defaultItems) {
+  if (!items) {
+    return items;
+  }
+  return items.map(x => {
+    let found;
+    if (isDefaultItem(x)) {
+      found = defaultItems.find(y => (x.element || x.key) === (y.element || y.key));
+    }
+    return found || x;
+  });
+}
+
 export default class Toolbar extends React.Component {
   constructor(props) {
     super(props);
 
-    const items = (props.items) ? props.items : this._defaultItems();
-    // const { customItems = [] } = props;
+    const items = buildItems(props.items, this._defaultItems());
     this.state = {
-      items, // : items.concat(customItems),
+      items,
     };
     store.subscribe(state => this.setState({ store: state }));
     this.create = this.create.bind(this);
