@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.jsx',
-  devtool: 'source-map',
+
   output: {
     path: path.resolve('./dist'),
     filename: 'app.js',
@@ -71,6 +71,5 @@ module.exports = {
   },
   performance: {
     hints: false
-  },
-  mode: 'development'
+  }
 };
