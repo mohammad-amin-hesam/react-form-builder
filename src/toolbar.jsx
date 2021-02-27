@@ -14,7 +14,7 @@ function isDefaultItem(item) {
 
 function buildItems(items, defaultItems) {
   if (!items) {
-    return items;
+    return defaultItems;
   }
   return items.map(x => {
     let found;

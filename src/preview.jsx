@@ -235,10 +235,6 @@ export default class Preview extends React.Component {
       if (!item.component || typeof item.component !== 'function') {
         // eslint-disable-next-line no-param-reassign
         item.component = this.props.registry.get(item.key);
-        if (!item.component) {
-          // eslint-disable-next-line no-console
-          console.error(`${item.element} was not registered`);
-        }
       }
     }
     const SortableFormElement = SortableFormElements[item.element];

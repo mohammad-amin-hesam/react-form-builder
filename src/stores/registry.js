@@ -34,7 +34,7 @@ function regg() {
   function get(name) {
     // eslint-disable-next-line no-prototype-builtins
     if (!registry.hasOwnProperty(name)) {
-      throw new Error(`No such entry '${name}'`);
+      console.error(`No such entry '${name}'`);
     }
     return registry[name];
   }
