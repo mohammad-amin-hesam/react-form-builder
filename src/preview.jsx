@@ -19,7 +19,7 @@ export default class Preview extends React.Component {
 
     this.editForm = React.createRef();
     this.state = {
-      data: [],
+      data: props.data || [],
       answer_data: {},
     };
     this.seq = 0;
@@ -33,13 +33,6 @@ export default class Preview extends React.Component {
     this.setAsChild = this.setAsChild.bind(this);
     this.removeChild = this.removeChild.bind(this);
     this._onDestroy = this._onDestroy.bind(this);
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    if (props.data && props.data !== state.data) {
-      store.dispatch('updateOrder', props.data);
-    }
-    return null;
   }
 
   componentDidMount() {
